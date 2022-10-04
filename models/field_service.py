@@ -17,6 +17,8 @@ class FieldService(models.Model):
     imei = fields.Char(string="IMEI/Serial No")
     invoice_no = fields.Char(string="Invoice No")
     invoice_attachment = fields.Image(string="Invoice Attachment")
+    product_id = fields.Many2one('product.product', required=True)
+    customer_id = fields.Many2one('res.partner', required=True)
     outlet = fields.Char(string="Outlet")
 
     @api.model
