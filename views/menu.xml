@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+            id="field_service_main_root"
+            name="USL Field Service"
+            sequence="0"/>
+
+    <menuitem
+            id="field_service_main_menu"
+            name="Field Service Details"
+            parent="field_service_main_root"
+            sequence="10"/>
+
+</odoo>
