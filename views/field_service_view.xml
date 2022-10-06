@@ -9,6 +9,25 @@
                 <field name="order_no"/>
                 <field name="order_date"/>
                 <field name="branch"/>
+                <field name="dealer" optional="hide"/>
+                <field name="serial_no"/>
+                <field name="product_id"/>
+                <field name="warranty_expiry_date_l"/>
+                <field name="department" optional="hide"/>
+                <field name="priority_level" optional="hide"/>
+                <field name="communication_media" optional="hide"/>
+                <field name="invoice_no"/>
+                <field name="customer_id"/>
+                <field name="pop"/>
+                <field name="warranty_void_reason"/>
+                <field name="possible_delivery_date"/>
+                <field name="service_type"/>
+                <field name="invoice_attachment"/>
+                <field name="warranty_expiry_date_p"/>
+                <field name="warranty_status"/>
+                <field name="guaranty_expiry_date" optional="hide"/>
+                <field name="customer_remark" optional="hide"/>
+                <field name="remark" optional="hide"/>
             </tree>
         </field>
     </record>
@@ -20,50 +39,70 @@
             <form>
                 <sheet>
                     <div class="oe_button_box" name="button-box" style="height:50px">
-                        <button class="oe_stat_button" type="object" string="Symptoms" name="actions_test" icon="fa-star">
-<!--                            <field name="outlet" string="Symptoms" widget="statinfo"/>-->
+                        <button class="oe_stat_button" type="object" string="Symptoms" name="actions_test"
+                                icon="fa-star">
+                            <!--                            <field name="outlet" string="Symptoms" widget="statinfo"/>-->
                         </button>
-                        <button class="oe_stat_button" type="object" string="Assign To Engineer Details" name="actions_test" icon="fa-user">
-<!--                            <field name="outlet" string="Assign To Engineer Details" widget="statinfo"/>-->
+                        <button class="oe_stat_button" type="object" string="Assign To Engineer Details"
+                                name="actions_test" icon="fa-user">
+                            <!--                            <field name="outlet" string="Assign To Engineer Details" widget="statinfo"/>-->
                         </button>
-                        <button class="oe_stat_button" type="object" string="Diagnosis and Repair" name="actions_test" icon="fa-bug">
-<!--                            <field name="outlet" string="Diagnosis and Repair" widget="statinfo"/>-->
+                        <button class="oe_stat_button" type="object" string="Diagnosis and Repair" name="actions_test"
+                                icon="fa-bug">
+                            <!--                            <field name="outlet" string="Diagnosis and Repair" widget="statinfo"/>-->
                         </button>
-                        <button class="oe_stat_button" type="object" string="Item Consumption Details" name="actions_test" icon="fa-wrench">
-<!--                            <field name="outlet" string="Item Consumption Details" widget="statinfo"/>-->
+                        <button class="oe_stat_button" type="object" string="Item Consumption Details"
+                                name="actions_test" icon="fa-wrench">
+                            <!--                            <field name="outlet" string="Item Consumption Details" widget="statinfo"/>-->
                         </button>
-                        <button class="oe_stat_button" type="object" string="Transport Activity details" name="actions_test" icon="fa-car">
-<!--                            <field name="outlet" string="Transport Activity details" widget="statinfo"/>-->
+                        <button class="oe_stat_button" type="object" string="Transport Activity details"
+                                name="actions_test" icon="fa-car">
+                            <!--                            <field name="outlet" string="Transport Activity details" widget="statinfo"/>-->
                         </button>
-                        <button class="oe_stat_button" type="object" string="Communication Details" name="actions_test" icon="fa-tty">
-<!--                            <field name="outlet" string="Communication Details" widget="statinfo"/>-->
+                        <button class="oe_stat_button" type="object" string="Communication Details" name="actions_test"
+                                icon="fa-tty">
+                            <!--                            <field name="outlet" string="Communication Details" widget="statinfo"/>-->
                         </button>
-                        <button class="oe_stat_button" type="object" string="Service Order Transfer" name="actions_test" icon="fa-check">
-<!--                            <field name="outlet" string="Service Order Transfer" widget="statinfo"/>-->
+                        <button class="oe_stat_button" type="object" string="Service Order Transfer" name="actions_test"
+                                icon="fa-check">
+                            <!--                            <field name="outlet" string="Service Order Transfer" widget="statinfo"/>-->
                         </button>
-                        <button class="oe_stat_button" type="object" string="Remark" name="actions_test" icon="fa-bookmark">
-<!--                            <field name="outlet" string="Remark" widget="statinfo"/>-->
+                        <button class="oe_stat_button" type="object" string="Remark" name="actions_test"
+                                icon="fa-bookmark">
+                            <!--                            <field name="outlet" string="Remark" widget="statinfo"/>-->
                         </button>
                     </div>
                     <group col="3">
-                        <group >
+                        <group>
                             <field name="order_no"/>
                             <field name="dealer"/>
-                            <field name="imei"/>
+                            <field name="serial_no"/>
                             <field name="product_id"/>
+                            <field name="warranty_expiry_date_l"/>
+                            <field name="department"/>
+                            <field name="priority_level"/>
                         </group>
                         <group>
                             <field name="order_date"/>
                             <field name="communication_media"/>
                             <field name="invoice_no"/>
                             <field name="customer_id"/>
-
+                            <field name="pop"/>
+                            <field name="warranty_void_reason"/>
+                            <field name="possible_delivery_date"/>
                         </group>
                         <group>
                             <field name="branch"/>
                             <field name="service_type"/>
                             <field name="invoice_attachment"/>
+                            <field name="warranty_expiry_date_p"/>
+                            <field name="warranty_status"/>
+                            <field name="guaranty_expiry_date"/>
                         </group>
+                    </group>
+                    <group>
+                        <field name="customer_remark"/>
+                        <field name="remark"/>
                     </group>
                 </sheet>
                 <!--Chatter-->

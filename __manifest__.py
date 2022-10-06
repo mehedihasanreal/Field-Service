@@ -14,6 +14,7 @@
         'data/data.xml',
         'views/menu.xml',
         'views/field_service_view.xml',
+        'views/field_service_data_view.xml',
     ],
     'demo': [],
     'application': True,
