@@ -9,7 +9,7 @@
                 <field name="order_no"/>
                 <field name="order_date"/>
                 <field name="branch"/>
-                <field name="dealer" optional="hide"/>
+                <field name="retailer" optional="hide"/>
                 <field name="serial_no"/>
                 <field name="product_id"/>
                 <field name="warranty_expiry_date_l"/>
@@ -39,10 +39,6 @@
             <form>
                 <sheet>
                     <div class="oe_button_box" name="button-box" style="height:50px">
-                        <button class="oe_stat_button" type="object" string="Symptoms" name="actions_test"
-                                icon="fa-star">
-                            <!--                            <field name="outlet" string="Symptoms" widget="statinfo"/>-->
-                        </button>
                         <button class="oe_stat_button" type="object" string="Assign To Engineer Details"
                                 name="actions_test" icon="fa-user">
                             <!--                            <field name="outlet" string="Assign To Engineer Details" widget="statinfo"/>-->
@@ -75,7 +71,7 @@
                     <group col="3">
                         <group>
                             <field name="order_no"/>
-                            <field name="dealer"/>
+                            <field name="retailer"/>
                             <field name="serial_no"/>
                             <field name="product_id"/>
                             <field name="warranty_expiry_date_l"/>
@@ -104,6 +100,35 @@
                         <field name="customer_remark"/>
                         <field name="remark"/>
                     </group>
+                    <group col="3">
+                        <group>
+                            <field name="repair_status"/>
+                            <field name="item_receive_branch"/>
+                        </group>
+                        <group>
+                            <field name="product_receive_date"/>
+                            <field name="delivery_date"/>
+                        </group>
+                        <group>
+                            <field name="item_receive_status"/>
+                        </group>
+                    </group>
+                    <group col="3">
+                        <group>
+                            <field name="is_receive_branch"/>
+                        </group>
+                        <group>
+                            <field name="is_so_transfer"/>
+                        </group>
+                        <group>
+                            <field name="is_sms"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Symptoms">
+
+                        </page>
+                    </notebook>
                 </sheet>
                 <!--Chatter-->
                 <div class="oe_chatter">

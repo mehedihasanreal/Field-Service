@@ -12,7 +12,7 @@ class FieldService(models.Model):
                            default=lambda self: _('New'))
     order_date = fields.Date(string="Order Date", default=fields.Date.context_today)
     branch = fields.Selection([('mirpur', 'Mirpur'), ('uttara', 'Uttara')], string="Branch", tracking=True)
-    dealer = fields.Selection([('dell', 'Dell'), ('hp', 'HP'), ('smart', 'Smart')], string="Dealer/Retailer")
+    retailer = fields.Many2one('res.partner.category', string="Dealer/Retailer")
     communication_media = fields.Selection([('call', 'Call'), ('email', 'Email')], string="Communication Media")
     service_type = fields.Selection([('repair', 'Repair'), ('maintenance', 'Maintenance')], string="Service Type")
     serial_no = fields.Many2one('field.service.data', string="IMEI/Serial No")
@@ -26,13 +26,24 @@ class FieldService(models.Model):
     warranty_expiry_date_p = fields.Date(related='serial_no.warranty_expiry_date_p', string="Warranty Expiry Date(p)")
     guaranty_expiry_date = fields.Date(related='serial_no.guaranty_expiry_date', string="Guaranty Expiry Date")
     warranty_void_reason = fields.Selection([('warranty', 'Warranty'), ('guaranty', 'Guaranty'), ('repair', 'Repair'),
-                                             ('maintenance', 'Maintenance')], string="Warranty Void Reason")
+                                             ('maintenance', 'Maintenance')], string="Warranty Void Reason", readonly=False)
     department = fields.Selection([('dell', 'Dell'), ('hp', 'HP'), ('smart', 'Smart')], string="Department")
     priority_level = fields.Selection([('low', 'Low'), ('mid', 'Mid'), ('high', 'High'), ('very high', 'Very High'),
                                        ('vip', 'Vip')], string="Priority Level")
     possible_delivery_date = fields.Date(string="Possible Delivery Date")
     customer_remark = fields.Text(string="Customer Remark")
     remark = fields.Text(string="Remark")
+    repair_status = fields.Selection([('repaired', 'Repaired'), ('not-repaired', 'Not-Repaired'),
+                                      ('repairing', 'Repairing')], string="Repair Status")
+    product_receive_date = fields.Date(string="Product Receive Date")
+    delivery_date = fields.Date(string="Delivery Date")
+    item_receive_branch = fields.Selection([('dhaka', 'Dhaka'), ('chittagong', 'Chittagong'), ('khulna', 'Khulna')],
+                                           string="Item Receive Branch")
+    item_receive_status = fields.Selection([('received', 'Received'), ('not-received', 'Not- Received')],
+                                           string="Item Receive Status")
+    is_receive_branch = fields.Boolean(string="Is Receive From?")
+    is_so_transfer = fields.Boolean(string="Is SO Transfer?")
+    is_sms = fields.Boolean(string="Is SMS?")
 
     @api.model
     def create(self, vals):
