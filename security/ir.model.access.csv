@@ -1,4 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access.field.service,access_field_service,usl_service_order.model_field_service,base.group_user,1,1,1,1
 access.field.service.data,access_field_service_data,usl_service_order.model_field_service_data,base.group_user,1,1,1,1
+access.symptoms.lines,access_symptoms_lines,usl_service_order.model_symptoms_lines,base.group_user,1,1,1,1
 

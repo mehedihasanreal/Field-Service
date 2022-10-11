@@ -12,7 +12,11 @@ class FieldService(models.Model):
                            default=lambda self: _('New'))
     order_date = fields.Date(string="Order Date", default=fields.Date.context_today)
     branch = fields.Selection([('mirpur', 'Mirpur'), ('uttara', 'Uttara')], string="Branch", tracking=True)
-    retailer = fields.Many2one('res.partner.category', string="Dealer/Retailer")
+    retailer = fields.Many2one(
+        'res.partner',
+        string="Dealer/Retailer",
+        domain=['|', ('category_id', '=', 'Dealer'), ('category_id', '=', 'Retailer')]
+    )
     communication_media = fields.Selection([('call', 'Call'), ('email', 'Email')], string="Communication Media")
     service_type = fields.Selection([('repair', 'Repair'), ('maintenance', 'Maintenance')], string="Service Type")
     serial_no = fields.Many2one('field.service.data', string="IMEI/Serial No")
@@ -45,6 +49,27 @@ class FieldService(models.Model):
     is_so_transfer = fields.Boolean(string="Is SO Transfer?")
     is_sms = fields.Boolean(string="Is SMS?")
 
+    symptoms = fields.Text(string="Symptoms")
+    reason = fields.Text(string="Reason")
+
+    symptoms_lines_ids = fields.One2many('symptoms.lines', 'order_id', string="Symptoms")
+
+    @api.model
+    def create(self, vals):
+        vals['order_no'] = self.env['ir.sequence'].next_by_code('service.order')
+        return super(FieldService, self).create(vals)
+
+    def action_symptoms(self):
+        return
+
+    def write(self, values):
+        res = super(FieldService, self).write(values)
+        sl_no = 0
+        for line in self.symptoms_lines_ids:
+            sl_no += 1
+            line.sl_no = sl_no
+        return res
+
     @api.model
     def create(self, vals):
         if vals.get('order_no', _('New')) == _('New'):
@@ -54,3 +79,14 @@ class FieldService(models.Model):
 
     def actions_test(self):
         return
+
+
+class SymptomsLines(models.Model):
+    _name = "symptoms.lines"
+    _description = "Symptoms Lines"
+
+    symptoms1 = fields.Text(string="Symptoms")
+    reason1 = fields.Text(string="Reason")
+    sl_no = fields.Integer(string='SLN.')
+
+    order_id = fields.Many2one('field.service', string="Order")
